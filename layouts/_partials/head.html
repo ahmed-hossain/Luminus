@@ -1,14 +1,26 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}</title>
-<!-- Anti-Flashbang Script -->
+
+
+{{/*  Icons  */}}
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="msapplication-TileColor" content="#da1212">
+<meta name="theme-color" content="#dfdfdf">
+
+<link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
+
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+
+{{/*  Anti-Flashbang Script  */}}
 <script>
     const theme = localStorage.getItem("theme") || light;
     document.documentElement.setAttribute("data-theme", theme);
-    
-    // Sync checkbox with saved theme
-    const toggle = document.getElementById('theme-toggle');
-    toggle.setAttribute("checked", theme === "dark");
 </script>
 
 {{ partialCached "common/font.html" . }}

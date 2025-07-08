@@ -27,6 +27,10 @@ figcaption {
 
 
 /* Navbar */
+.theme-toggle-hidden {
+  visibility: hidden;
+}
+
 :where( li:not(.menu-title, .disabled) > *:not(ul, details, .menu-title), li:not(.menu-title, .disabled) > details > summary:not(.menu-title) ):not(.btn) {
     &.menu-focus, &:focus-visible {
         background-color: inherit;

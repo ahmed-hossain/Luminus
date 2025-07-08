@@ -17,7 +17,27 @@
       {{ partial "footer.html" . }}
     </footer>
 
-  {{/*  Javascript  */}}
-  {{ partialCached "common/js.html" . }}
+    {{/*  Javascript  */}}
+    <script>
+      const themeToggle = document.getElementById('theme-toggle');
+
+      // Initialize theme from localStorage
+      const storedTheme = localStorage.getItem('theme');
+      if (storedTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeToggle.checked = true;
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+        themeToggle.checked = false;
+      }
+
+      // Listen for toggle change
+      themeToggle.addEventListener('change', () => {
+        const theme = themeToggle.checked ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+      });
+    </script>
+    {{ partialCached "common/js.html" . }}
   </body>
 </html>

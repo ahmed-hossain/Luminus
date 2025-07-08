@@ -1,20 +1,21 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}</title>
+<base href="{{ .Site.BaseURL }}">
 
 
 {{/*  Icons  */}}
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="manifest" href="/site.webmanifest">
+<link rel="icon" href="{{ relURL "favicon.ico" }}" sizes="any">
+<link rel="apple-touch-icon" href="{{ relURL "apple-touch-icon.png" }}">
+<link rel="manifest" href="{{ relURL "site.webmanifest" }}">
 <meta name="msapplication-TileColor" content="#da1212">
 <meta name="theme-color" content="#dfdfdf">
 
-<link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
-<link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
+<link rel="icon" type="image/png" sizes="192x192" href="{{ relURL "android-chrome-192x192.png" }}">
+<link rel="icon" type="image/png" sizes="512x512" href="{{ relURL "android-chrome-512x512.png" }}">
 
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ relURL "favicon-32x32.png" }}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ relURL "favicon-16x16.png" }}">
 
 
 {{/*  Anti-Flashbang Script  */}}

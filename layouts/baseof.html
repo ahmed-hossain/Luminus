@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html class="bg-base-200" lang="{{ site.Language.LanguageCode }}" dir="{{ or site.Language.LanguageDirection `ltr` }}">
+  <head>
+    {{ partial "head.html" . }}
+  </head>
+  <body>
+    <header class="bg-base-100 sticky top-0 z-50">
+      {{ partial "header.html" . }}
+    </header>
+    
+    <!-- Main Content -->
+    <main class="px-4 py-12 sm:py-16 max-w-4xl mx-auto">
+      {{ block "main" . }}{{ end }}
+    </main>
+
+    <footer class="flex justify-center">
+      {{ partial "footer.html" . }}
+    </footer>
+
+  {{/*  Javascript  */}}
+  {{ partialCached "common/js.html" . }}
+  </body>
+</html>

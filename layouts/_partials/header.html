@@ -1,0 +1,38 @@
+<!-- Navbar -->
+<div class="navbar max-w-4xl mx-auto px-4">
+    <nav class="navbar-start flex-grow">
+        <a class="text-lg md:text-xl font-medium hover:text-primary" href="/">{{ site.Title }}</a>
+    </nav>
+    <nav class="navbar-end flex-srink-0 max-w-30 md:max-w-[50%]">
+        <ul class="hidden lg:menu lg:menu-horizontal px-1">
+            {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+        </ul>
+        <!-- Dropdown for mobile -->
+        <div class="dropdown">
+            <label tabindex="0" class="btn btn-ghost lg:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+            </label>
+            <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+            </ul>
+        </div>
+        <!-- Theme Toggle Button -->
+        {{/*  <label class="swap swap-rotate btn btn-ghost btn-circle ms-2">
+            <input type="checkbox" id="theme-toggle" />
+            <!-- sun icon -->
+            <svg class="swap-off fill-current w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+            <!-- moon icon -->
+            <svg class="swap-on fill-current w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        </label>  */}}
+
+        <label class="swap swap-rotate btn btn-ghost btn-circle">
+            <input type="checkbox" id="theme-toggle" />
+            
+            <!-- sun icon -->
+            <svg class="swap-off fill-current w-5 h-5 -mb-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+
+            <!-- moon icon -->
+            <svg class="swap-on fill-current w-5 h-5 -mb-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        </label>
+    </nav>
+</div>

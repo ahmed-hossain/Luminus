@@ -1,0 +1,9 @@
+@import "tailwindcss";
+@source "hugo_stats.json";
+@plugin "@tailwindcss/typography";
+
+/* Daisyui Themes */
+@import "./_themes.css";
+
+/* Theme related css */
+@import "./base.css";

@@ -1,0 +1,80 @@
+/* Basic Sitewise Styles */
+html {
+    scroll-behavior: smooth;
+    scrollbar-gutter: stable;
+}
+
+/* Images */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+img[data-sizes="auto"] {
+    display: block;
+}
+
+img,
+picture {
+    font-size: 0;
+}
+
+figcaption {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+
+
+/* Navbar */
+:where( li:not(.menu-title, .disabled) > *:not(ul, details, .menu-title), li:not(.menu-title, .disabled) > details > summary:not(.menu-title) ):not(.btn) {
+    &.menu-focus, &:focus-visible {
+        background-color: inherit;
+        @apply font-medium;
+    }
+}
+
+:where( li:not(.menu-title, .disabled) > *:not(ul, details, .menu-title):not(.btn):hover, li:not(.menu-title, .disabled) > details > summary:not(.menu-title):not(.btn):hover ) {
+    background-color: inherit;
+    @apply text-primary;
+}
+
+.lg\:menu>li, .active {
+    position: relative;
+}
+
+.active {
+    @apply text-primary;
+}
+
+.lg\:menu>li::after, .active::after {
+    position: absolute;
+    content: "";
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    --underline-thickness: 3px;
+    height: var(--underline-thickness);
+    border-radius: calc(var(--underline-thickness)/2);
+    @apply bg-primary;
+}
+
+.lg\:menu>li::after {
+    width: 0;
+}
+
+.active::after {
+    width: 75%;
+}
+
+.lg\:menu>li:hover::after {
+    width: 75%;
+    transition: .2s cubic-bezier(0, 0, 0.2, 1) width;
+}
+
+
+/* Hero section */
+.bio a:hover {
+    @apply text-primary;
+    transition: 0.2s cubic-bezier(0, 0, 0.2, 1) color;
+}

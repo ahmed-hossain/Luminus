@@ -1,0 +1,12 @@
+{{ $main := resources.Get "css/main.css" }}
+{{ $custom := resources.Get "css/_custom.css" }}
+{{ $merged := slice $main $custom | resources.Concat "css/bundle.css" }}
+
+{{- if hugo.IsDevelopment }}
+  <link rel="stylesheet" href="{{ $merged.RelPermalink }}">
+{{- else }}
+  {{- with $merged | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+  {{- end }}
+{{- end }}
+

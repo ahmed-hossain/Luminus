@@ -1,0 +1,64 @@
+baseURL = 'https://example.org/'
+languageCode = 'en-us'
+title = 'Chowdhury Ahmed Hossain'
+
+[params]
+  author = 'Chowdhury Ahmed Hossain'
+
+[menus]
+  [[menus.main]]
+    name = 'Home'
+    pageRef = '/'
+    weight = 10
+
+  [[menus.main]]
+    name = 'Publications'
+    pageRef = '/publications'
+    weight = 20
+
+  [[menus.main]]
+    name = 'Posts'
+    pageRef = '/posts'
+    weight = 30
+
+  [[menus.main]]
+    name = 'CV'
+    url = '/cv'
+    weight = 40
+
+[module]
+  [module.hugoVersion]
+    extended = false
+    min = '0.146.0'
+
+[build]
+  writeStats = true
+
+
+
+
+
+# Site Params
+# =============================================================================================
+# Images (@thulite/images)
+[params.thulite_images]
+  [params.thulite_images.defaults]
+    decoding = "async" # sync, async, or auto (default)
+    fetchpriority = "auto" # high, low, or auto (default)
+    loading = "eagar" # eager or lazy (default)
+    widths = [480, 576, 768, 1025, 1200, 1440] # [640, 768, 1024, 1366, 1600, 1920] for example
+    sizes = "auto" # 100vw (default), 75vw, or auto for example
+    process = "fill 1920x1080" # "fill 1600x900" or "fill 2100x900" for example
+    lqip = "16x webp q20" # "16x webp q20" or "21x webp q20" for example
+
+[imaging]
+  anchor = "Center"
+  bgColor = "#ffffff"
+  hint = "photo"
+  quality = 85
+  resampleFilter = "Lanczos"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

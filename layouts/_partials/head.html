@@ -1,0 +1,15 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}</title>
+<!-- Anti-Flashbang Script -->
+<script>
+    const theme = localStorage.getItem("theme") || light;
+    document.documentElement.setAttribute("data-theme", theme);
+    
+    // Sync checkbox with saved theme
+    const toggle = document.getElementById('theme-toggle');
+    toggle.setAttribute("checked", theme === "dark");
+</script>
+
+{{ partialCached "common/font.html" . }}
+{{ partialCached "common/css.html" . }}

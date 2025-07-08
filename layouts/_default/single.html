@@ -1,0 +1,16 @@
+{{ define "main" }}
+  <article>
+    <h1 class="text-4xl font-bold mb-2">{{ .Title }}</h1>
+    {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
+    {{ $dateHuman := .Date | time.Format ":date_long" }}
+    <p class="text-sm text-base-content/80 mb-6">
+      <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time> . {{ with .Params.author }}{{ . }}{{ else }}{{ site.Params.author }}{{ end }}
+    </p>
+
+    <hr class="opacity-15">
+
+    <div class="prose prose-lg max-w-full mt-6">
+      {{ .Content | markdownify }}
+    </div>
+  </article>
+{{ end }}

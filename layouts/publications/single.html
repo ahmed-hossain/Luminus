@@ -5,10 +5,10 @@
   <p class="text-sm italic ">{{ .Params.journal }} · {{ .Date.Format "January 2006" }}</p>
 
   <div class="flex flex-wrap gap-4 mt-4 mb-6">
-    {{ with .Params.links.pdf }}<a href="{{ . }}" class="btn btn-sm btn-outline hover:btn-primary">PDF</a>{{ end }}
-    {{ with .Params.links.doi }}<a href="{{ . }}" class="btn btn-sm btn-outline hover:btn-primary">DOI</a>{{ end }}
-    {{ with .Params.links.slides }}<a href="{{ . }}" class="btn btn-sm btn-outline hover:btn-primary">Slides</a>{{ end }}
-    {{ with .Params.links.code }}<a href="{{ . }}" class="btn btn-sm btn-outline hover:btn-primary">Code</a>{{ end }}
+    {{ with .Params.links.pdf }}<a href="{{ . }}" class="btn btn-md btn-outline hover:btn-primary">PDF</a>{{ end }}
+    {{ with .Params.links.doi }}<a href="{{ . }}" class="btn btn-md btn-outline hover:btn-primary">DOI</a>{{ end }}
+    {{ with .Params.links.slides }}<a href="{{ . }}" class="btn btn-md btn-outline hover:btn-primary">Slides</a>{{ end }}
+    {{ with .Params.links.code }}<a href="{{ . }}" class="btn btn-md btn-outline hover:btn-primary">Code</a>{{ end }}
   </div>
 
   <hr class="opacity-15">

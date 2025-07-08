@@ -68,11 +68,13 @@ figcaption {
 }
 
 .active::after {
-    width: 75%;
+    width: 90%;
+    @apply lg:w-[75%];
 }
 
 .lg\:menu>li:hover::after {
-    width: 75%;
+    width: 90%;
+    @apply lg:w-[75%];
     transition: .2s cubic-bezier(0, 0, 0.2, 1) width;
 }
 

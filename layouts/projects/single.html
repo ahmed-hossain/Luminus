@@ -1,0 +1,27 @@
+{{ define "main" }}
+  <article>
+    <h1 class="text-4xl font-bold mb-2">{{ .Title }}</h1>
+    <p class="text-sm text-base-content/80 mb-4">
+      {{ .Params.purpose }} · {{ if .Params.incomplete}}In progress{{ else }}{{ .Date.Format "January 2006" }}{{ end }}
+    </p>
+    {{ with .Params.pi }}
+      <p class="text text-base-content/80 mb-1"><span class="font-medium text-base-content">PI:</span> {{ . }}</p>
+    {{ end }}
+    {{ with .Params.collaborator}}
+      <p class="text text-base-content/80 mb-1"><span class="font-medium text-base-content">Collaborators:</span> {{ . }} </p>
+    {{ end }}
+
+    <div class="flex flex-wrap gap-4 mt-4 mb-6">
+      {{ with .Params.links.pdf }}<a href="{{ . }}" class="btn btn-md btn-outline hover:btn-primary">PDF</a>{{ end }}
+      {{ with .Params.links.doi }}<a href="{{ . }}" class="btn btn-md btn-outline hover:btn-primary">DOI</a>{{ end }}
+      {{ with .Params.links.slides }}<a href="{{ . }}" class="btn btn-md btn-outline hover:btn-primary">Slides</a>{{ end }}
+      {{ with .Params.links.code }}<a href="{{ . }}" class="btn btn-md btn-outline hover:btn-primary">Code</a>{{ end }}
+    </div>
+    
+    <hr class="opacity-15">
+
+    <div class="prose prose-lg max-w-full mt-6">
+      {{ .Content | markdownify }}
+    </div>
+  </article>
+{{ end }}

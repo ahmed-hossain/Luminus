@@ -1,7 +1,7 @@
 {{ define "main" }}
 <div class="space-y-12">
   <h1 class="text-4xl font-bold text-center mb-12">Posts</h1>
-  {{ $pages := where .Site.RegularPages "Section" "posts" }}
+  {{ $pages := sort (where .Site.RegularPages "Section" "posts") "Date" "desc" }}
     
   {{ range $id, $page := $pages }}
     <div class="flex flex-col md:flex-row gap-2 md:gap-6">
@@ -18,7 +18,9 @@
         <h3 class="text-xl font-semibold">
           <a href="{{ $page.RelPermalink }}" class="link-hover">{{ $page.Title }}</a>
         </h3>
-        <p class="text-sm text-gray-500">Posted on {{ $page.Date.Format "January 2, 2006" }}</p>
+        <p class="text-sm text-gray-500">
+          {{ $page.Date.Format "January 2, 2006" }} by {{ with .Params.author }}{{ . }}{{ else }}{{ site.Params.author }}{{ end }}
+        </p>
         <p>{{ truncate 200 $page.Summary }}</p>
         <a href="{{ $page.RelPermalink }}" class="btn btn-sm btn-outline hover:btn-primary mt-2">Read more</a>
       </div>

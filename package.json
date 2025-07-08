@@ -8,7 +8,7 @@
     "dev:hugo": "hugo server -D",
     "dev": "npm-run-all --parallel dev:tailwind dev:hugo",
     "build:tailwind": "npx @tailwindcss/cli -i ./assets/css/src/tailwind.css -o ./assets/css/main.css",
-    "build:hugo": "hugo build",
+    "build:hugo": "hugo --minify --baseURL \"$BASE_URL\"/",
     "build": "npm-run-all --sequential build:tailwind build:hugo"
   },
   "keywords": [],

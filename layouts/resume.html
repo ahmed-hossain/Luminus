@@ -38,9 +38,68 @@
     </div>
   </section>
 
-  {{/*  Bio Text  */}}
-  <section class="prose prose-lg max-w-none my-6 text-base-content/80 bio">
-    {{ .Params.bio | markdownify }}
+  {{/*  Download PDF CV  */}}
+  <section class="max-w-none flex flex-col my-6">
+    <div role="alert" class="alert alert-vertical sm:alert-horizontal shadow-none border border-base-content/15 p-4">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-error h-6 w-6 shrink-0">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+    </svg>
+    <span class="text-base">You can either view web verision of my cv or download the pdf version of it</span>
+    <div>
+        <a href="https://drive.google.com/file/d/1m-_wVOAbBglbRO_nP6Y6IQg6SqRJjx4h/view" class="btn btn-md btn-primary font-medium">
+            Download CV
+        </a>
+    </div>
+    </div>
+  </section>
+
+  {{/*  Education Section */}}
+  <section class="max-w-none flex flex-col my-6 space-y-4">
+    <h2 class="text-3xl font-bold">Education</h2>
+    <div class="space-y-4">
+      <div>
+        <div class="flex justify-between items-center">
+          <h3 class="font-semibold text-xl">Ph.D. in Mechanical Engineering</h3>
+          <p class="text-sm text-base-content/80">2025 – Present</p>
+        </div>
+        <p class="mb-2 text-sm">University of Houston</p>
+        <p class="text-base-content/80"><span class="font-medium">Dissertation:</span> Phase-Field Modeling of Fracture in Shape Memory Alloys</p>
+      </div>
+      <div>
+        <div class="flex justify-between items-center">
+          <h3 class="font-semibold text-xl">B.Sc. in Mechanical Engineering</h3>
+          <p class="text-sm text-base-content/80">2019 – 2024</p>
+        </div>
+        <p class="mb-1 text-sm">Bangladesh University of Engineering and Technology (BUET)</p>
+        <p class="mb-2 text-sm">CGPA: 3.48 out of 4.0</p>
+        <p class="text-base-content/80"><span class="font-medium">Thesis:</span>  Atomstic Investigation of Crack Propagation in B2 CoTi Alloy and Parametarization of Cohesive Traction Separation Laws</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="opacity-15">
+
+  {{/*  Experience Section */}}
+  <section class="max-w-none flex flex-col my-6 space-y-4">
+    <h2 class="text-3xl font-bold">Experience</h2>
+    <div class="space-y-4">
+      <div>
+        <div class="flex justify-between items-center">
+          <h3 class="font-semibold text-xl">Graduate Reasearch Assistant</h3>
+          <p class="text-sm text-base-content/80">Aug. 2025 – Present</p>
+        </div>
+        <p class="mb-1 text-sm">University of Houston</p>
+        <p class="mt-2 text-base-content/80">Phase-Field Modeling of Fracture in Shape Memory Alloys Phase-Field Modeling of Fracture in Shape Memory Alloys Phase-Field Modeling of Fracture in Shape Memory Alloys</p>
+      </div>
+      <div>
+        <div class="flex justify-between items-center">
+          <h3 class="font-semibold text-xl">Mechanical Engineering Intern</h3>
+          <p class="text-sm text-base-content/80">Nov. 2023</p>
+        </div>
+        <p class="mb-1 text-sm">Bangladesh University of Engineering and Technology (BUET)</p>
+        <p class="mt-2 text-base-content/80">Atomstic Investigation of Crack Propagation in B2 CoTi Alloy and Parametarization of Cohesive Traction Separation Laws</p>
+      </div>
+    </div>
   </section>
 
   <hr class="opacity-15">
@@ -130,119 +189,6 @@
           </div>
         </div>
       {{ end }}
-    </div>
-  </section>
-
-  <hr class="opacity-15">
-
-  {{/*  Education Section */}}
-  <section class="max-w-none flex flex-col my-6 space-y-4">
-    <h2 class="text-3xl font-bold">Education</h2>
-    <div class="space-y-4">
-      <div>
-        <div class="flex justify-between items-center">
-          <h3 class="font-semibold text-xl">Ph.D. in Mechanical Engineering</h3>
-          <p class="text-sm text-base-content/80">2025 – Present</p>
-        </div>
-        <p class="mb-2 text-sm">University of Houston</p>
-        <p class="text-base-content/80"><span class="font-medium">Dissertation:</span> Phase-Field Modeling of Fracture in Shape Memory Alloys</p>
-      </div>
-      <div>
-        <div class="flex justify-between items-center">
-          <h3 class="font-semibold text-xl">B.Sc. in Mechanical Engineering</h3>
-          <p class="text-sm text-base-content/80">2019 – 2024</p>
-        </div>
-        <p class="mb-1 text-sm">Bangladesh University of Engineering and Technology (BUET)</p>
-        <p class="mb-2 text-sm">CGPA: 3.48 out of 4.0</p>
-        <p class="text-base-content/80"><span class="font-medium">Thesis:</span>  Atomstic Investigation of Crack Propagation in B2 CoTi Alloy and Parametarization of Cohesive Traction Separation Laws</p>
-      </div>
-    </div>
-  </section>
-
-  <hr class="opacity-15">
-
-  {{/*  Experience Section */}}
-  <section class="max-w-none flex flex-col my-6 space-y-4">
-    <h2 class="text-3xl font-bold">Experience</h2>
-    <div class="space-y-4">
-      <div>
-        <div class="flex justify-between items-center">
-          <h3 class="font-semibold text-xl">Graduate Reasearch Assistant</h3>
-          <p class="text-sm text-base-content/80">Aug. 2025 – Present</p>
-        </div>
-        <p class="mb-1 text-sm">University of Houston</p>
-        <p class="mt-2 text-base-content/80">Phase-Field Modeling of Fracture in Shape Memory Alloys Phase-Field Modeling of Fracture in Shape Memory Alloys Phase-Field Modeling of Fracture in Shape Memory Alloys</p>
-      </div>
-      <div>
-        <div class="flex justify-between items-center">
-          <h3 class="font-semibold text-xl">Mechanical Engineering Intern</h3>
-          <p class="text-sm text-base-content/80">Nov. 2023</p>
-        </div>
-        <p class="mb-1 text-sm">Bangladesh University of Engineering and Technology (BUET)</p>
-        <p class="mt-2 text-base-content/80">Atomstic Investigation of Crack Propagation in B2 CoTi Alloy and Parametarization of Cohesive Traction Separation Laws</p>
-      </div>
-    </div>
-  </section>
-
-  <hr class="opacity-15">
-
-  {{/*  Latest News   */}}
-  {{/*  <section class="prose prose-lg max-w-none flex flex-col my-6 space-y-4">
-    <div class="flex justify-between items-center">
-      <h2 class="mt-2 mb-1 font-bold">Latest News</h2>
-      <a href="#" class="text-sm link hover:text-primary">View all</a>
-    </div>
-    <div class="space-y-2">
-      <div class="flex justify-between">
-        <span>UIST paper published!</span>
-        <span class="text-sm text-base-content/60">July 02, 2025</span>
-      </div>
-      <div class="flex justify-between">
-        <span>New blog post published!</span>
-        <span class="text-sm text-base-content/60">May 31, 2025</span>
-      </div>
-      <div class="flex justify-between">
-        <span>Accepted in University of Houston!</span>
-        <span class="text-sm text-base-content/60">February 18, 2025</span>
-      </div>
-      <div class="flex justify-between">
-        <span>Graduated from BUET!</span>
-        <span class="text-sm text-base-content/60">July 01, 2024</span>
-      </div>
-    </div>
-  </section>
-
-  <hr class="opacity-15">  */}}
-
-  {{/* Recent Blog Posts */}}
-  <section class="max-w-none my-6 space-y-4">
-    <div class="flex justify-between items-center">
-      <h2 class="text-3xl font-bold">Recent Posts</h2>
-      <a href="{{ relURL "posts" }}" class="text-sm link hover:text-primary">View all</a>
-    </div>
-
-    <div class="space-y-4">
-    {{ range $index, $page := first 2 (where .Site.RegularPages "Section" "posts") }}
-      <div class="flex flex-col md:flex-row gap-2 md:gap-6">
-
-        <div class="w-full md:w-72 flex md:items-stretch justify-center overflow-hidden">
-          {{ with $page.Params.image }}
-            <img src="{{ . }}" alt="{{ $page.Title }}" class="w-full md:w-auto md:h-full object-cover rounded" />
-          {{ else }}
-            <img src="https://picsum.photos/300/200?random={{$index}}" alt="{{ $page.Title }}" class="w-full md:w-auto md:h-full object-cover rounded" />
-          {{ end }}
-        </div>
-
-        <div class="flex-1 space-y-2 py-4 md:py-0">
-          <h3 class="text-xl font-semibold">
-            <a href="{{ $page.RelPermalink }}" class="link-hover">{{ $page.Title }}</a>
-          </h3>
-          <p class="text-sm text-base-content/80">{{ $page.Date.Format "January 2, 2006" }}</p>
-          <p>{{ truncate 200 $page.Summary }}</p>
-          <a href="{{ $page.RelPermalink }}" class="btn btn-sm btn-outline hover:btn-primary mt-1">Read more</a>
-        </div>
-      </div>
-    {{ end }}
     </div>
   </section>
 

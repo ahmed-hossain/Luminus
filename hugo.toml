@@ -1,4 +1,4 @@
-baseURL = 'https://example.com'
+baseURL = 'https://example.com/luminus'
 languageCode = 'en-us'
 title = 'Chowdhury Ahmed Hossain'
 
@@ -28,7 +28,7 @@ title = 'Chowdhury Ahmed Hossain'
 
   [[menus.main]]
     name = 'CV'
-    url = 'https://drive.google.com/file/d/1m-_wVOAbBglbRO_nP6Y6IQg6SqRJjx4h/view'
+    pageRef = '/cv'
     weight = 40
 
 [module]

@@ -9,7 +9,7 @@ img: images/livingthings.jpg
 bio: |
     I'm a first-year Mechanical Engineering PhD student working on developing better materials by changing their internal geometry. My research focuses on understanding the mechanical constituent properties and dynamic responses of bistable auxetic materials. 
     
-    You can read more about my [research](/research) or [view my cv](/cv)
+    Feel free to learn more about my [projects](projects) or [view my cv](cv)
 
 social:
   - name: email

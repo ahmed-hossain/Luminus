@@ -27,10 +27,6 @@ figcaption {
 
 
 /* Navbar */
-.theme-toggle-hidden {
-  visibility: hidden;
-}
-
 :where( li:not(.menu-title, .disabled) > *:not(ul, details, .menu-title), li:not(.menu-title, .disabled) > details > summary:not(.menu-title) ):not(.btn) {
     &.menu-focus, &:focus-visible {
         background-color: inherit;
@@ -40,15 +36,10 @@ figcaption {
 
 :where( li:not(.menu-title, .disabled) > *:not(ul, details, .menu-title):not(.btn):hover, li:not(.menu-title, .disabled) > details > summary:not(.menu-title):not(.btn):hover ) {
     background-color: inherit;
-    @apply text-primary;
 }
 
 .lg\:menu>li, .active {
     position: relative;
-}
-
-.active {
-    @apply text-primary;
 }
 
 .lg\:menu>li::after, .active::after {

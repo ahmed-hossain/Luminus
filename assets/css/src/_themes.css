@@ -27,11 +27,11 @@
   name: "light";
   default: true;
   prefersdark: false;
-  --color-primary: #ef2212;
+  --color-primary: #df2212;
 }
 
 @plugin "daisyui/theme" {
   name: "dark";
   default: false;
-  --color-primary: #ef2212;
+  --color-primary: #df2212;
 }

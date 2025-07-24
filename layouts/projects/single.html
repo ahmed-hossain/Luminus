@@ -5,19 +5,21 @@
       {{ .Params.purpose }} · {{ if .Params.incomplete}}In progress{{ else }}{{ .Date.Format "January 2006" }}{{ end }}
     </p>
     {{ with .Params.pi }}
-      <p class="text text-base-content/80 mb-1"><span class="font-medium text-base-content">Supervised by:</span> {{ . }}  
+      <p class="text-base-content/80 mb-1"><span class="text-base-content">Supervised by:</span> {{ . }}</p> 
     {{ end }}
-    {{ if and .Params.pi .Params.collaborator }}  |  {{ end }}
-    {{ with .Params.collaborator}}<span class="font-medium text-base-content">
-      In collaboration with:</span> {{ . }}</p>
+    {{ with .Params.collaborator }}
+      <p class="text-base-content/80 mb-1"><span class="text-base-content">Collaborator(s):</span> {{ . }}</p> 
     {{ end }}
 
-    <div class="flex flex-wrap gap-4 mt-4 mb-6">
-      {{ with .Params.links.pdf }}<a href="{{ . }}" class="btn btn-md btn-outline hover:btn-primary">PDF</a>{{ end }}
-      {{ with .Params.links.doi }}<a href="{{ . }}" class="btn btn-md btn-outline hover:btn-primary">DOI</a>{{ end }}
-      {{ with .Params.links.slides }}<a href="{{ . }}" class="btn btn-md btn-outline hover:btn-primary">Slides</a>{{ end }}
-      {{ with .Params.links.code }}<a href="{{ . }}" class="btn btn-md btn-outline hover:btn-primary">Code</a>{{ end }}
-    </div>
+    {{ with .Params.links }}
+      <div class="flex flex-wrap gap-2 md:gap-4 mt-4 mb-6">
+        {{ range $key, $value := . }}
+          <a href="{{ $value }}" class="btn btn-sm btn-outline hover:btn-primary">
+            {{ $key | upper }}
+          </a>
+        {{ end }}
+      </div>
+    {{ end }}
     
     <hr class="opacity-15">
 

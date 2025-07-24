@@ -11,7 +11,7 @@
   {{/* 3. Sort the groups by year (the "Key") in descending order */}}
   {{ range sort $groups "Key" "desc" }}
     <div>
-      <span class="text-3xl mb-6 block border-b border-base-content/20">{{ .Key }}</span>
+      <span class="text-3xl mb-6 pb-2 block border-b border-base-content/20">{{ .Key }}</span>
 
       <div class="space-y-6">
         {{ range .Pages.ByDate.Reverse }}
@@ -19,14 +19,17 @@
             <h2 class="text-xl font-semibold">
               <a href="{{ .RelPermalink }}" class="link-hover">{{ .Title }}</a>
             </h2>
-            <p class="text-sm text-base-content/80">{{ .Params.authors }}</p>
+            <p class="text-sm text-base-content/80 mt-2">{{ .Params.authors | markdownify }}</p>
             <p class="text-sm italic">{{ .Params.journal }} · {{ .Date.Format "January 2006" }}</p>
-            <div class="flex flex-wrap gap-2 mt-4">
-              {{ with .Params.links.pdf }}<a href="{{ . }}" class="btn btn-xs btn-outline hover:btn-primary mr-1">PDF</a>{{ end }}
-              {{ with .Params.links.doi }}<a href="{{ . }}" class="btn btn-xs btn-outline hover:btn-primary mr-1">DOI</a>{{ end }}
-              {{ with .Params.links.slides }}<a href="{{ . }}" class="btn btn-xs btn-outline hover:btn-primary mr-1">Slides</a>{{ end }}
-              {{ with .Params.links.code }}<a href="{{ . }}" class="btn btn-xs btn-outline hover:btn-primary mr-1">Code</a>{{ end }}
-            </div>
+            {{ with .Params.links }}
+              <div class="flex flex-wrap gap-2 mt-2">
+                {{ range $key, $value := . }}
+                  <a href="{{ $value }}" class="btn btn-xs btn-outline hover:btn-primary mr-1">
+                    {{ $key | upper }}
+                  </a>
+                {{ end }}
+              </div>
+            {{ end }}
           </div>
         {{ end }}        
       </div>

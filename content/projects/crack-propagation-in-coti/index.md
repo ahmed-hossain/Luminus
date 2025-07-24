@@ -1,6 +1,7 @@
 ---
 title: "Extraction of Mechanical Properties of Shape Memory Alloys From Instrumented Spherical Indentation"
 date: 2024-10-01
+category: research
 purpose: "Undergraduate Thesis"
 collaborator: "Md Amin Haque"
 pi: "Dr. Md Jane Alam Khan"

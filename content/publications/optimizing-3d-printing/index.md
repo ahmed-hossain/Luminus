@@ -1,7 +1,7 @@
 ---
 title: "A Finite-Strain Phase-Field Description of Thermomechanically-Induced Fracture in Shape Memory Alloys"
 date: 2025-03-01
-authors: "Chowdhury A. Hossain, John Doe, Jane Smith"
+authors: "**Chowdhury A. Hossain**, John Doe, Jane Smith"
 journal: "Additive Manufacturing Letters"
 links:
   pdf: "#"

@@ -1,15 +1,18 @@
 {{ define "main" }}
 <article>
   <h1 class="text-3xl font-bold mb-2">{{ .Title }}</h1>
-  <p class="text-sm text-base-content/80 mb-1">{{ .Params.authors }}</p>
+  <p class="text-sm text-base-content/80 mb-1">{{ .Params.authors | markdownify }}</p>
   <p class="text-sm italic ">{{ .Params.journal }} · {{ .Date.Format "January 2006" }}</p>
 
-  <div class="flex flex-wrap gap-4 mt-4 mb-6">
-    {{ with .Params.links.pdf }}<a href="{{ . }}" class="btn btn-md btn-outline hover:btn-primary">PDF</a>{{ end }}
-    {{ with .Params.links.doi }}<a href="{{ . }}" class="btn btn-md btn-outline hover:btn-primary">DOI</a>{{ end }}
-    {{ with .Params.links.slides }}<a href="{{ . }}" class="btn btn-md btn-outline hover:btn-primary">Slides</a>{{ end }}
-    {{ with .Params.links.code }}<a href="{{ . }}" class="btn btn-md btn-outline hover:btn-primary">Code</a>{{ end }}
-  </div>
+  {{ with .Params.links }}
+    <div class="flex flex-wrap gap-2 md:gap-4 mt-4 mb-6">
+      {{ range $key, $value := . }}
+        <a href="{{ $value }}" class="btn btn-sm btn-outline hover:btn-primary mr-1">
+          {{ $key | upper }}
+        </a>
+      {{ end }}
+    </div>
+  {{ end }}
 
   <hr class="opacity-15">
 

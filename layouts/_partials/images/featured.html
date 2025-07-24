@@ -1,0 +1,40 @@
+{{/*
+@context {page} .page - The current page
+@context {dict} .options - Optional args for rendering (alt, class, etc.)
+*/}}
+
+{{- $page := .page }}
+{{- $opts := or .options dict }}
+
+{{- $candidates := slice "featured" "cover" "thumbnail" "image" }}
+{{- $exts := slice "jpg" "jpeg" "png" "webp" }}
+
+{{- $img := "" }}
+
+{{- $src := or $page.Params.thumbnail "" }}
+{{- if $src }}
+  {{- with $page.Resources.Get $src }}
+    {{- $img = . }}
+  {{- end }}
+{{- end }}
+
+{{- range $name := $candidates }}
+  {{- range $ext := $exts }}
+    {{- with $page.Resources.Get (printf "%s.%s" $name $ext) }}
+      {{- $img = . }}
+      {{- break }}
+    {{- end }}
+    {{- if $img }}{{ break }}{{ end }}
+  {{- end }}
+  {{- if $img }}{{ break }}{{ end }}
+{{- end }}
+
+{{- if $img }}
+  {{- $args := merge (dict
+      "page" $page
+      "src" $img.Name
+    ) $opts }}
+  {{- partial "images/img.html" $args }}
+{{- else }}
+  {{- warnf "No featured image found for %q" $page.File.Path }}
+{{- end }}

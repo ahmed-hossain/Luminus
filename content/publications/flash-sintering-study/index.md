@@ -1,7 +1,7 @@
 ---
 title: "Fracture toughness and fatigue crack growth resistance of precipitate-free and precipitation hardened NiTiHf shape memory alloys"
 date: 2025-01-10
-authors: "Chowdhury A. Hossain, M. Rahman"
+authors: "**Chowdhury A. Hossain**, M. Rahman"
 journal: "Journal of Materials Research"
 links:
   pdf: "#"

@@ -1,16 +1,16 @@
 {{ define "main" }}
   {{/* Hero Section  */}}
-  <section class="flex flex-col-reverse md:flex-row justify-between gap-8 md:gap-12">
+  <section class="flex flex-col-reverse md:flex-row justify-between gap-6 md:gap-8">
 
     {{/*  Left Column: Text Content  */}}
     <div class="text-center md:text-left">
-        <h1 class="text-4xl sm:text-5xl font-bold text-base-content">{{ .Params.name }}</h1>
+        <h1 class="text-4xl sm:text-5xl font-bold text-base-content tracking-tight">{{ .Params.name }}</h1>
         <p class="text-lg text-base-content/80 mt-2">{{ .Params.role }} </p>
         {{/*  Social Icons  */}}
         <div class="flex items-center justify-center md:justify-start mt-4">
         {{ with .Params.social}}
           {{ range . }}
-            <a href="{{ .url }}" target="_blank" class="btn btn-ghost btn-square hover:text-primary" aria-label="{{ .name }}">
+            <a href="{{ .url }}" title="{{ .url }}" target="_blank" class="btn btn-ghost btn-square hover:text-primary" aria-label="{{ .name }}">
               {{ .icon | safeHTML }}
             </a>
           {{ end }}
@@ -39,14 +39,100 @@
   </section>
 
   {{/*  Bio Text  */}}
-  <section class="prose prose-lg max-w-none my-6 text-base-content/80 bio">
+  <section class="prose max-w-none my-6 text-base-content bio">
     {{ .Params.bio | markdownify }}
   </section>
 
   <hr class="opacity-15">
 
+  {{/*  Updates   */}}
+  <section class="prose prose-lg max-w-none my-6 space-y-4">
+    <div class="flex justify-between items-center">
+      <h2 class="mt-2 mb-1 font-bold">Updates</h2>
+      <a href="updates" class="text-sm link hover:text-primary">View all</a>
+    </div>
+
+    {{ $sourcePage := site.GetPage "updates.md" }}
+    {{ $updates := sort $sourcePage.Params.updates "date" "desc" }}
+
+    <div class="space-y-2">
+      {{ range first 3 $updates }}
+        <div class="prose max-w-none flex flex-col md:flex-row-reverse justify-between">
+          <span class="text-sm text-base-content/60">{{ time.Format "January 02, 2006" .date }}</span>
+          <span class="text-base">{{ .content | markdownify }}</span>
+        </div>
+      {{ end }}
+    </div>
+  </section>
+
+  <hr class="opacity-15">
+
+  {{/*  Education Section */}}
+  <section class="my-6 space-y-4">
+    <h2 class="text-3xl font-bold">Education</h2>
+    <div class="space-y-4">
+      <div>
+        <div class="flex justify-between items-center">
+          <h3 class="font-semibold text-xl">Ph.D. in Mechanical Engineering</h3>
+          <p class="text-sm text-base-content/80">2025 – Present</p>
+        </div>
+        <p class="mb-2 text-sm">University of Houston</p>
+      </div>
+      <div>
+        <div class="flex justify-between items-center">
+          <h3 class="font-semibold text-xl">B.Sc. in Mechanical Engineering</h3>
+          <p class="text-sm text-base-content/80">2019 – 2024</p>
+        </div>
+        <p class="mb-1 text-sm">Bangladesh University of Engineering and Technology (BUET)</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="opacity-15">
+
+  {{/*  Experience Section */}}
+  {{/*  <section class="my-6 space-y-4">
+    <h2 class="text-3xl font-bold">Experience</h2>
+    <div class="space-y-4">
+      <div>
+        <div class="flex justify-between items-center">
+          <h3 class="font-semibold text-xl">Graduate Reasearch Assistant</h3>
+          <p class="text-sm text-base-content/80">Aug. 2025 – Present</p>
+        </div>
+        <p class="mb-1 text-sm">University of Houston</p>
+        <p class="mt-2 text-base-content/80">A detailed investigation into the constitutive response, transition kinetics and associated energy dissipation, stability, and free and forced vibration (dynamic response) of rotating bistable auxetic materials via a blend of experimental methods, theoretical analysis, and computational modeling.</p>
+      </div>
+      <div>
+        <div class="flex justify-between items-center">
+          <h3 class="font-semibold text-xl">Mechanical Engineering Intern</h3>
+          <p class="text-sm text-base-content/80">Nov. 2023</p>
+        </div>
+        <p class="mb-1 text-sm">Bangladesh University of Engineering and Technology (BUET)</p>
+        <p class="mt-2 text-base text-base-content/80">Atomstic Investigation of Crack Propagation in B2 CoTi Alloy and Parametarization of Cohesive Traction Separation Laws</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="opacity-15">  */}}
+
+
+  {{/*  Skills Section  */}}
+  <section class="my-6 space-y-4">
+    <h2 class="text-3xl font-bold">Skills</h2>
+    <ul class="list-disc pl-5 space-y-2">
+      <li><span class="font-semibold">Simulation:</span> LAMMPS, Abaqus CAE, Ansys Mechanical</li>
+      <li><span class="font-semibold">CAD:</span> SolidWorks, AutoCAD, Fusion 360</li>
+      <li><span class="font-semibold">Programming:</span> Python, Matlab, C</li>
+      <li><span class="font-semibold">Hardware:</span> 3d printing, Microcontroller (Arduino)</li>
+      <li><span class="font-semibold">Miscellaneous:</span> LaTeX, Zotero, Techplot, Matplotlib</li>
+    </ul>
+  </section>
+
+  <hr class="opacity-15">
+  
+
   {{/*  Research Interests Section  */}}
-  <section class="max-w-none flex flex-col my-6 space-y-4">
+  <section class="my-6 space-y-4">
     <h2 class="text-3xl font-bold">Research Interests</h2>
     <ul class="list-disc pl-5 space-y-2">
       <li>Phase-field modeling of fracture and fatigue in shape memory alloys</li>
@@ -59,15 +145,15 @@
 
   <hr class="opacity-15">
 
+
   {{/* Recent Publications */}}
-  <section class="max-w-none flex flex-col my-6 space-y-4">
+  {{/*  <section class="my-6 space-y-4">
     <div class="flex justify-between items-center">
-      <h2 class="text-3xl mt-2 mb-0 font-bold">Recent Publications</h2>
+      <h2 class="text-3xl mt-2 mb-0 font-bold">Publications</h2>
       <a class="text-sm link hover:text-primary" href="{{ relURL "publications" }}">View all</a>
     </div>
 
     <div class="space-y-4">
-      {{/* Get the 5 most recent pages from the "publications" section */}}
       {{ $pages := where .Site.RegularPages "Section" "publications" }}
       {{ range first 5 (sort $pages "Date" "desc") }}
         <div>
@@ -76,25 +162,29 @@
               {{ .Title }}
             </a>
           </h3>
-          <p class="text-sm text-base-content/80 mb-1">{{ .Params.authors }}</p>
+          <p class="text-sm text-base-content/80 mb-1 mt-2">{{ .Params.authors | markdownify }}</p>
           <p class="text-sm italic">{{ .Params.journal }} · {{ .Date.Format "January 2006" }}</p>
-          <div class="flex flex-wrap gap-2 mt-2">
-            {{ with .Params.links.pdf }}<a href="{{ . }}" class="btn btn-xs btn-outline hover:btn-primary mr-1">PDF</a>{{ end }}
-            {{ with .Params.links.doi }}<a href="{{ . }}" class="btn btn-xs btn-outline hover:btn-primary mr-1">DOI</a>{{ end }}
-            {{ with .Params.links.slides }}<a href="{{ . }}" class="btn btn-xs btn-outline hover:btn-primary mr-1">Slides</a>{{ end }}
-            {{ with .Params.links.code }}<a href="{{ . }}" class="btn btn-xs btn-outline hover:btn-primary mr-1">Code</a>{{ end }}
-          </div>
+          {{ with .Params.links }}
+            <div class="flex flex-wrap gap-2 mt-2">
+              {{ range $key, $value := . }}
+                <a href="{{ $value }}" class="btn btn-xs btn-outline hover:btn-primary mr-1">
+                  {{ $key | upper }}
+                </a>
+              {{ end }}
+            </div>
+          {{ end }}
         </div>
       {{ end }}
     </div>
   </section>
 
-  <hr class="opacity-15">
+  <hr class="opacity-15">  */}}
+
 
   {{/* Selected Projects */}}
-  <section class="max-w-none flex flex-col my-6 space-y-4">
+  <section class="my-6 space-y-4">
     <div class="flex justify-between items-center">
-      <h2 class="text-3xl mt-2 mb-0 font-bold">Selected Projects</h2>
+      <h2 class="text-3xl mt-2 mb-0 font-bold">Projects</h2>
       <a class="text-sm link hover:text-primary" href="{{ relURL "projects" }}">View all</a>
     </div>
 
@@ -103,31 +193,24 @@
       {{ $featured := where $pages ".Params.featured" true }}
       {{ $sorted := sort (sort $featured "Date" "desc") ".Params.order" "asc" }}
 
-      {{ range $id, $page := $sorted }}
-        <div class="flex flex-col md:flex-row gap-2 md:gap-6">
-          <div class="w-full md:w-72 flex md:items-stretch justify-center overflow-hidden">
-            {{ with $page.Params.image }}
-              <img src="{{ . }}" alt="{{ $page.Title }}" class="w-full md:w-auto md:h-full object-cover rounded" />
-            {{ else }}
-              <img src="https://picsum.photos/300/200?random={{add 90 $id}}" alt="{{ $page.Title }}" class="w-full md:w-auto md:h-full object-cover rounded" />
-            {{ end }}
-          </div>
-
-          <div class="flex-1 space-y-2 py-4 md:py-0">
-            <h3 class="text-xl font-semibold">
-              <a href="{{ $page.RelPermalink }}" class="link-hover">
-                {{ $page.Title }}
-              </a>
-            </h3>
-            <p class="text-sm text-base-content/80 mb-1">{{ $page.Params.purpose }} · {{ if $page.Params.incomplete}}In progress{{ else }}{{ $page.Date.Format "January 2006" }}{{ end }}</p>
-            <p>{{ truncate 200 $page.Summary }}</p>
+      {{ range $sorted }}
+        <div class="space-y-2 py-4 md:py-0">
+          <h3 class="text-xl font-semibold">
+            <a href="{{ .RelPermalink }}" class="link-hover">
+              {{ .Title }}
+            </a>
+          </h3>
+          <p class="text-sm text-base-content/80 mb-1">{{ .Params.purpose }} · {{ if .Params.incomplete}}In progress{{ else }}{{ .Date.Format "January 2006" }}{{ end }}</p>
+          <p>{{ truncate 200 .Summary }}</p>
+          {{ with .Params.links }}
             <div class="flex flex-wrap gap-2 mt-2">
-              {{ with $page.Params.links.pdf }}<a href="{{ . }}" class="btn btn-xs btn-outline hover:btn-primary mr-1">PDF</a>{{ end }}
-              {{ with $page.Params.links.doi }}<a href="{{ . }}" class="btn btn-xs btn-outline hover:btn-primary mr-1">DOI</a>{{ end }}
-              {{ with $page.Params.links.slides }}<a href="{{ . }}" class="btn btn-xs btn-outline hover:btn-primary mr-1">Slides</a>{{ end }}
-              {{ with $page.Params.links.code }}<a href="{{ . }}" class="btn btn-xs btn-outline hover:btn-primary mr-1">Code</a>{{ end }}
+              {{ range $key, $value := . }}
+                <a href="{{ $value }}" class="btn btn-xs btn-outline hover:btn-primary mr-1">
+                  {{ $key | upper }}
+                </a>
+              {{ end }}
             </div>
-          </div>
+          {{ end }}
         </div>
       {{ end }}
     </div>
@@ -135,111 +218,27 @@
 
   <hr class="opacity-15">
 
-  {{/*  Education Section */}}
-  <section class="max-w-none flex flex-col my-6 space-y-4">
-    <h2 class="text-3xl font-bold">Education</h2>
-    <div class="space-y-4">
-      <div>
-        <div class="flex justify-between items-center">
-          <h3 class="font-semibold text-xl">Ph.D. in Mechanical Engineering</h3>
-          <p class="text-sm text-base-content/80">2025 – Present</p>
-        </div>
-        <p class="mb-2 text-sm">University of Houston</p>
-        <p class="text-base-content/80"><span class="font-medium">Dissertation:</span> Phase-Field Modeling of Fracture in Shape Memory Alloys</p>
-      </div>
-      <div>
-        <div class="flex justify-between items-center">
-          <h3 class="font-semibold text-xl">B.Sc. in Mechanical Engineering</h3>
-          <p class="text-sm text-base-content/80">2019 – 2024</p>
-        </div>
-        <p class="mb-1 text-sm">Bangladesh University of Engineering and Technology (BUET)</p>
-        <p class="mb-2 text-sm">CGPA: 3.48 out of 4.0</p>
-        <p class="text-base-content/80"><span class="font-medium">Thesis:</span>  Atomstic Investigation of Crack Propagation in B2 CoTi Alloy and Parametarization of Cohesive Traction Separation Laws</p>
-      </div>
-    </div>
-  </section>
-
-  <hr class="opacity-15">
-
-  {{/*  Experience Section */}}
-  <section class="max-w-none flex flex-col my-6 space-y-4">
-    <h2 class="text-3xl font-bold">Experience</h2>
-    <div class="space-y-4">
-      <div>
-        <div class="flex justify-between items-center">
-          <h3 class="font-semibold text-xl">Graduate Reasearch Assistant</h3>
-          <p class="text-sm text-base-content/80">Aug. 2025 – Present</p>
-        </div>
-        <p class="mb-1 text-sm">University of Houston</p>
-        <p class="mt-2 text-base-content/80">Phase-Field Modeling of Fracture in Shape Memory Alloys Phase-Field Modeling of Fracture in Shape Memory Alloys Phase-Field Modeling of Fracture in Shape Memory Alloys</p>
-      </div>
-      <div>
-        <div class="flex justify-between items-center">
-          <h3 class="font-semibold text-xl">Mechanical Engineering Intern</h3>
-          <p class="text-sm text-base-content/80">Nov. 2023</p>
-        </div>
-        <p class="mb-1 text-sm">Bangladesh University of Engineering and Technology (BUET)</p>
-        <p class="mt-2 text-base-content/80">Atomstic Investigation of Crack Propagation in B2 CoTi Alloy and Parametarization of Cohesive Traction Separation Laws</p>
-      </div>
-    </div>
-  </section>
-
-  <hr class="opacity-15">
-
-  {{/*  Latest News   */}}
-  {{/*  <section class="prose prose-lg max-w-none flex flex-col my-6 space-y-4">
-    <div class="flex justify-between items-center">
-      <h2 class="mt-2 mb-1 font-bold">Latest News</h2>
-      <a href="#" class="text-sm link hover:text-primary">View all</a>
-    </div>
-    <div class="space-y-2">
-      <div class="flex justify-between">
-        <span>UIST paper published!</span>
-        <span class="text-sm text-base-content/60">July 02, 2025</span>
-      </div>
-      <div class="flex justify-between">
-        <span>New blog post published!</span>
-        <span class="text-sm text-base-content/60">May 31, 2025</span>
-      </div>
-      <div class="flex justify-between">
-        <span>Accepted in University of Houston!</span>
-        <span class="text-sm text-base-content/60">February 18, 2025</span>
-      </div>
-      <div class="flex justify-between">
-        <span>Graduated from BUET!</span>
-        <span class="text-sm text-base-content/60">July 01, 2024</span>
-      </div>
-    </div>
-  </section>
-
-  <hr class="opacity-15">  */}}
-
   {{/* Recent Blog Posts */}}
-  <section class="max-w-none my-6 space-y-4">
+  <section class="my-6 space-y-4">
     <div class="flex justify-between items-center">
-      <h2 class="text-3xl font-bold">Recent Posts</h2>
+      <h2 class="text-3xl font-bold">Blog Posts</h2>
       <a href="{{ relURL "posts" }}" class="text-sm link hover:text-primary">View all</a>
     </div>
 
     <div class="space-y-4">
-    {{ range $index, $page := first 2 (where .Site.RegularPages "Section" "posts") }}
+    {{ range first 2 (where .Site.RegularPages "Section" "posts") }}
       <div class="flex flex-col md:flex-row gap-2 md:gap-6">
-
+        {{/*  Featured Image  */}}
         <div class="w-full md:w-72 flex md:items-stretch justify-center overflow-hidden">
-          {{ with $page.Params.image }}
-            <img src="{{ . }}" alt="{{ $page.Title }}" class="w-full md:w-auto md:h-full object-cover rounded" />
-          {{ else }}
-            <img src="https://picsum.photos/300/200?random={{$index}}" alt="{{ $page.Title }}" class="w-full md:w-auto md:h-full object-cover rounded" />
-          {{ end }}
+          {{ partial "images/featured.html" (dict "page" . "options" (dict "alt" .Title "class" "w-full md:w-auto md:h-full object-cover rounded")) }}
         </div>
-
         <div class="flex-1 space-y-2 py-4 md:py-0">
           <h3 class="text-xl font-semibold">
-            <a href="{{ $page.RelPermalink }}" class="link-hover">{{ $page.Title }}</a>
+            <a href="{{ .RelPermalink }}" class="link-hover">{{ .Title }}</a>
           </h3>
-          <p class="text-sm text-base-content/80">{{ $page.Date.Format "January 2, 2006" }}</p>
-          <p>{{ truncate 200 $page.Summary }}</p>
-          <a href="{{ $page.RelPermalink }}" class="btn btn-sm btn-outline hover:btn-primary mt-1">Read more</a>
+          <p class="text-sm text-base-content/80">{{ .Date.Format "January 2, 2006" }}</p>
+          <p>{{ truncate 200 .Summary }}</p>
+          <a href="{{ .RelPermalink }}" class="btn btn-sm btn-outline hover:btn-primary mt-1">Read more</a>
         </div>
       </div>
     {{ end }}

@@ -1,7 +1,7 @@
 /* Change the link in layouts/_partials/common/font.html to your desired google font imports and mention those fonts bellow */
 @layer base {
   :root {
-    --font-sans: "Work Sans", sans-serif;
+    --font-sans: "Inter", sans-serif;
     --font-display: "Crimson Pro", serif; /* This will be the default */
     --font-mono: "Fira Mono", monospace;
   }
@@ -26,7 +26,6 @@
 @plugin "daisyui/theme" {
   name: "light";
   default: true;
-  prefersdark: false;
   --color-primary: #df2212;
 }
 

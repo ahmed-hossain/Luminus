@@ -3,26 +3,22 @@
   <h1 class="text-4xl font-bold text-center mb-12">Posts</h1>
   {{ $pages := sort (where .Site.RegularPages "Section" "posts") "Date" "desc" }}
     
-  {{ range $id, $page := $pages }}
+  {{ range $pages }}
     <div class="flex flex-col md:flex-row gap-2 md:gap-6">
-
+      {{/*  Featured Image  */}}
       <div class="w-full md:w-72 flex md:items-stretch justify-center overflow-hidden">
-        {{ with $page.Params.image }}
-          <img src="{{ . }}" alt="{{ $.Title }}" class="w-full md:w-auto md:h-full object-cover rounded" />
-        {{ else }}
-          <img src="https://picsum.photos/300/200?random={{$id}}" alt="{{ $.Title }}" class="w-full md:w-auto md:h-full object-cover rounded" />
-        {{ end }}
+        {{ partial "images/featured.html" (dict "page" . "options" (dict "alt" .Title "class" "w-full md:h-full object-cover rounded")) }}
       </div>
 
       <div class="flex-1 space-y-2 py-4 md:py-0">
         <h3 class="text-xl font-semibold">
-          <a href="{{ $page.RelPermalink }}" class="link-hover">{{ $page.Title }}</a>
+          <a href="{{ .RelPermalink }}" class="link-hover">{{ .Title }}</a>
         </h3>
         <p class="text-sm text-gray-500">
-          {{ $page.Date.Format "January 2, 2006" }} by {{ with .Params.author }}{{ . }}{{ else }}{{ site.Params.author }}{{ end }}
+          {{ .Date.Format "January 2, 2006" }} by {{ with .Params.author }}{{ . }}{{ else }}{{ site.Params.author }}{{ end }}
         </p>
-        <p>{{ truncate 200 $page.Summary }}</p>
-        <a href="{{ $page.RelPermalink }}" class="btn btn-sm btn-outline hover:btn-primary mt-2">Read more</a>
+        <p>{{ truncate 200 .Summary }}</p>
+        <a href="{{ .RelPermalink }}" class="btn btn-sm btn-outline hover:btn-primary mt-2">Read more</a>
       </div>
     </div>
   {{ end }}

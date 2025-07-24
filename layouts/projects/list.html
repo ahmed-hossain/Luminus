@@ -1,35 +1,43 @@
 {{ define "main" }}
 <div class="space-y-12">
   <h1 class="text-4xl font-bold text-center mb-12">Projects</h1>
-  {{ $pages := sort (where .Site.RegularPages "Section" "projects") "Date" "desc" }}
-    
-  {{ range $id, $page := $pages }}
-    <div class="flex flex-col md:flex-row gap-2 md:gap-6">
 
-      <div class="w-full md:w-72 flex md:items-stretch justify-center overflow-hidden">
-        {{ with $page.Params.image }}
-          <img src="{{ . }}" alt="{{ $.Title }}" class="w-full md:w-auto md:h-full object-cover rounded" />
-        {{ else }}
-          <img src="https://picsum.photos/300/200?random={{$id}}" alt="{{ $.Title }}" class="w-full md:w-auto md:h-full object-cover rounded" />
-        {{ end }}
-      </div>
+  {{ $allPages := where .Site.RegularPages "Section" "projects" }}
+  {{ $desiredOrder := slice "research" "mechanical design" }}
 
-      <div class="flex-1 space-y-2 py-4 md:py-0">
-        <h3 class="text-xl font-semibold">
-          <a href="{{ $page.RelPermalink }}" class="hover:underline">
-            {{ $page.Title }}
-          </a>
-        </h3>
-        <p class="text-sm text-base-content/80 mb-1">{{ $page.Params.purpose }} · {{ if $page.Params.incomplete}}In progress{{ else }}{{ $page.Date.Format "January 2006" }}{{ end }}</p>
-        <p>{{ truncate 200 $page.Summary }}</p>
-        <div class="flex flex-wrap gap-2 mt-2">
-          {{ with $page.Params.links.pdf }}<a href="{{ . }}" class="btn btn-xs btn-outline hover:btn-primary mr-1">PDF</a>{{ end }}
-          {{ with $page.Params.links.doi }}<a href="{{ . }}" class="btn btn-xs btn-outline hover:btn-primary mr-1">DOI</a>{{ end }}
-          {{ with $page.Params.links.slides }}<a href="{{ . }}" class="btn btn-xs btn-outline hover:btn-primary mr-1">Slides</a>{{ end }}
-          {{ with $page.Params.links.code }}<a href="{{ . }}" class="btn btn-xs btn-outline hover:btn-primary mr-1">Code</a>{{ end }}
+  {{ range $cat := $desiredOrder }}
+    {{ $groupPages := where $allPages "Params.category" $cat }}
+
+    {{ if gt (len $groupPages) 0 }}
+      <span class="text-3xl mb-6 pb-2 block border-b border-base-content/20 capitalize">{{ $cat }}</span>
+
+      {{ $sorted := sort $groupPages "Params.order" "asc" }}
+      {{ $sorted = sort $sorted "Date" "desc" }}
+
+      {{ range $sorted }}
+        <div class="flex-1 space-y-2 py-4 md:py-0">
+          <h2 class="text-xl font-semibold">
+            <a href="{{ .RelPermalink }}" class="hover:underline">
+              {{ .Title }}
+            </a>
+          </h2>
+          <p class="text-sm text-base-content/80 mb-1">
+            {{ .Params.purpose }} · 
+            {{ if .Params.incomplete }}In progress{{ else }}{{ .Date.Format "January 2006" }}{{ end }}
+          </p>
+          <p>{{ truncate 200 .Summary }}</p>
+          {{ with .Params.links }}
+            <div class="flex flex-wrap gap-2 mt-2">
+              {{ range $key, $value := . }}
+                <a href="{{ $value }}" class="btn btn-xs btn-outline hover:btn-primary">
+                  {{ $key | upper }}
+                </a>
+              {{ end }}
+            </div>
+          {{ end }}
         </div>
-      </div>
-    </div>
+      {{ end }}
+    {{ end }}
   {{ end }}
 </div>
 {{ end }}

@@ -1,0 +1,39 @@
+backend:
+  name: github
+  repo: none # Path to your GitHub repository
+  # optional, defaults to master
+  # branch: main
+  
+local_backend: true
+
+media_folder: 'assets/images'
+public_folder: 'images'
+collections:
+  - name: posts
+    label: Blog Posts
+    label_singular: Blog Post
+    folder: 'content/posts'
+    path: '{{slug}}/index'
+    filter: {field: "cms_exclude"}
+    create: true  # Allow users to create new documents in this collection
+    fields:  # The fields each document in this collection have
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Summary", name: "summary", widget: "markdown", required: false}
+      - label: "Draft"
+        name: "draft"
+        widget: "boolean"
+        default: false
+        required: false
+      - label: "Featured"
+        name: "featured"
+        widget: "boolean"
+        default: false
+        required: false
+      - label: "Featured Image"
+        name: "thumbnail"
+        widget: "image"
+        required: false
+        media_library:
+          config:
+            multiple: false

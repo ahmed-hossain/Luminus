@@ -1,0 +1,156 @@
+{{ define "main" }}
+  {{/* Hero Section  */}}
+  <div class="mb-6 space-y-2">
+    <div class="flex justify-between items-center">
+      <h1 class="text-4xl sm:text-5xl font-bold text-base-content tracking-tight">Curriculam Vitae</h1>
+      <a href="{{ .Params.cta.url }}" class="btn btn-md btn-outline hover:btn-primary font-medium">
+          {{ .Params.cta.text}}
+      </a>
+    </div>
+    <p class="text-sm text-base-content/80">Last updated on {{ with .Params.lastmod }}{{ . | time.Format "January 2, 2006" }}{{else}}{{ .Date.Format "January 2, 2006" }}{{end}}</p>
+  </div>
+
+  <hr class="opacity-15">
+
+  {{/*  Education Section */}}
+  <section class="max-w-none flex flex-col my-6 space-y-4">
+    <h2 class="text-3xl font-bold">Education</h2>
+    <div class="space-y-4">
+      <div>
+        <div class="flex justify-between items-center">
+          <h3 class="font-semibold text-xl">Ph.D. in Mechanical Engineering</h3>
+          <p class="text-sm text-base-content/80">2025 – Present</p>
+        </div>
+        <p class="mb-2 text-sm">University of Houston</p>
+      </div>
+      <div>
+        <div class="flex justify-between items-center">
+          <h3 class="font-semibold text-xl">B.Sc. in Mechanical Engineering</h3>
+          <p class="text-sm text-base-content/80">2019 – 2024</p>
+        </div>
+        <p class="mb-1 text-sm">Bangladesh University of Engineering and Technology (BUET)</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="opacity-15">
+
+  {{/*  Experience Section */}}
+  <section class="max-w-none flex flex-col my-6 space-y-4">
+    <h2 class="text-3xl font-bold">Experience</h2>
+    <div class="space-y-4">
+      <div>
+        <div class="flex justify-between items-center">
+          <h3 class="font-semibold text-xl">Graduate Reasearch Assistant</h3>
+          <p class="text-sm text-base-content/80">Aug. 2025 – Present</p>
+        </div>
+        <p class="mb-1 text-sm">University of Houston</p>
+        <p class="mt-2 text-base-content/80">A detailed investigation into the constitutive response, transition kinetics and associated energy dissipation, stability, and free and forced vibration (dynamic response) of rotating bistable auxetic materials via a blend of experimental methods, theoretical analysis, and computational modeling.</p>
+      </div>
+      <div>
+        <div class="flex justify-between items-center">
+          <h3 class="font-semibold text-xl">Mechanical Engineering Intern</h3>
+          <p class="text-sm text-base-content/80">Nov. 2023</p>
+        </div>
+        <p class="mb-1 text-sm">BSRM Steels Limited</p>
+        <p class="mt-2 text-base text-base-content/80">Gained experience in heavy industry operations through exposure to the steel re-rolling process. Experienced various industrial systems such as furnace, WTP, hydraulics and lubrication, TMT, and power supply. Learned about industry practices such as TPM, quality control, and inventory management.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="opacity-15">
+
+  {{/*  Skills Section  */}}
+  <section class="my-6 space-y-4">
+    <h2 class="text-3xl font-bold">Skills</h2>
+    <ul class="list-none space-y-2">
+      <li><span class="font-semibold">Simulation:</span> LAMMPS, Abaqus CAE, Ansys Mechanical</li>
+      <li><span class="font-semibold">CAD:</span> SolidWorks, AutoCAD, Fusion 360</li>
+      <li><span class="font-semibold">Programming:</span> Python, Matlab, C</li>
+      <li><span class="font-semibold">Hardware:</span> 3d printing, Product design, Manufacturing, Microcontroller (Arduino)</li>
+      <li><span class="font-semibold">Miscellaneous:</span> LATEX, Zotero, Techplot, Matplotlib</li>
+    </ul>
+  </section>
+
+  <hr class="opacity-15">
+
+  {{/*  Research Interests Section  */}}
+  <section class="max-w-none flex flex-col my-6 space-y-4">
+    <h2 class="text-3xl font-bold">Research Interests</h2>
+    <ul class="list-disc pl-5 space-y-2">
+      <li>Phase-field modeling of fracture and fatigue in shape memory alloys</li>
+      <li>Thermomechanical behavior of metallic biomaterials</li>
+      <li>Data-driven material design and computational mechanics</li>
+      <li>Multiscale modeling of functional materials</li>
+      <li>Finite element analysis and inverse problems in materials science</li>
+    </ul>
+  </section>
+
+  <hr class="opacity-15">
+
+  {{/* Publications */}}
+  <section class="max-w-none flex flex-col my-6 space-y-4">
+    <div class="flex justify-between items-center">
+      <h2 class="text-3xl mt-2 mb-0 font-bold">Publications</h2>
+    </div>
+
+    <div class="space-y-4">
+      {{/* Get the 5 most recent pages from the "publications" section */}}
+      {{ $pages := where .Site.RegularPages "Section" "publications" }}
+      {{ range (sort $pages "Date" "desc") }}
+        <div>
+          <h3 class="text-xl font-semibold">
+            <a href="{{ .RelPermalink }}" class="link-hover">
+              {{ .Title }}
+            </a>
+          </h3>
+          <p class="text-sm text-base-content/80 mb-1 mt-2">{{ .Params.authors | markdownify }}</p>
+          <p class="text-sm italic">{{ .Params.journal }} · {{ .Date.Format "January 2006" }}</p>
+          <div class="flex flex-wrap gap-2 mt-2">
+            {{ with .Params.links.pdf }}<a href="{{ . }}" class="btn btn-xs btn-outline hover:btn-primary mr-1">PDF</a>{{ end }}
+            {{ with .Params.links.doi }}<a href="{{ . }}" class="btn btn-xs btn-outline hover:btn-primary mr-1">DOI</a>{{ end }}
+            {{ with .Params.links.slides }}<a href="{{ . }}" class="btn btn-xs btn-outline hover:btn-primary mr-1">Slides</a>{{ end }}
+            {{ with .Params.links.code }}<a href="{{ . }}" class="btn btn-xs btn-outline hover:btn-primary mr-1">Code</a>{{ end }}
+          </div>
+        </div>
+      {{ end }}
+    </div>
+  </section>
+
+  <hr class="opacity-15">
+
+  {{/* Projects */}}
+  <section class="max-w-none flex flex-col my-6 space-y-4">
+    <div class="flex justify-between items-center">
+      <h2 class="text-3xl mt-2 mb-0 font-bold">Projects</h2>
+    </div>
+
+    <div class="space-y-4">
+      {{ $pages := where .Site.RegularPages "Section" "projects" }}
+      {{ $featured := where $pages ".Params.featured" true }}
+      {{ $sorted := sort (sort $featured "Date" "desc") ".Params.order" "asc" }}
+
+      {{ range $sorted }}
+        <div class="flex-1 space-y-2 py-4 md:py-0">
+          <h3 class="text-xl font-semibold">
+            <a href="{{ .RelPermalink }}" class="link-hover">
+              {{ .Title }}
+            </a>
+          </h3>
+          <p class="text-sm text-base-content/80 mb-1">{{ .Params.purpose }} · {{ if .Params.incomplete}}In progress{{ else }}{{ .Date.Format "January 2006" }}{{ end }}</p>
+          <p>{{ truncate 200 .Summary }}</p>
+          {{ with .Params.links }}
+            <div class="flex flex-wrap gap-2 mt-2">
+              {{ range $key, $value := . }}
+                <a href="{{ $value }}" class="btn btn-xs btn-outline hover:btn-primary mr-1">
+                  {{ $key | title }}
+                </a>
+              {{ end }}
+            </div>
+          {{ end }}
+        </div>
+      {{ end }}
+    </div>
+  </section>
+
+{{ end }}

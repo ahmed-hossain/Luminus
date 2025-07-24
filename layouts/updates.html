@@ -1,0 +1,14 @@
+{{ define "main" }}
+<div class="space-y-12">
+  <h1 class="text-4xl font-bold text-center mb-12">Updates</h1>
+  <div class="space-y-2">
+    {{ $updates := sort .Params.updates "date" "desc" }}
+    {{ range $updates }}
+      <div class="prose max-w-none flex flex-col text-center md:flex-row-reverse md:text-left justify-between">
+        <span class="text-sm text-base-content/60">{{ time.Format "January 02, 2006" .date }}</span>
+        <span class="text-base">{{ .content | markdownify }}</span>
+      </div>
+    {{ end }}
+  </div>
+</div>
+{{ end }}

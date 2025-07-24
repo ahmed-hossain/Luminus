@@ -1,16 +1,16 @@
 <!-- Navbar -->
-<div class="navbar max-w-4xl mx-auto px-4">
-    <nav class="navbar-start flex-grow">
+<div class="navbar max-w-3xl mx-auto px-4">
+    <nav class="navbar-start w-auto flex-grow">
         <a class="text-lg md:text-xl font-medium hover:text-primary" href="{{ "" | absLangURL }}">{{ site.Title }}</a>
     </nav>
-    <nav class="navbar-end w-auto flex-srink-0">
+    <nav class="navbar-end w-auto flex flex-row-reverse lg:flex-row flex-srink-0">
         <ul class="hidden lg:menu lg:menu-horizontal px-1 space-y-2 lg:space-y-0">
             {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
         </ul>
         <!-- Dropdown for mobile -->
         <div class="dropdown dropdown-end">
-            <label tabindex="0" class="btn btn-ghost lg:hidden">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16 M12 12h8 M4 18h16" /></svg>
+            <label tabindex="0" class="btn btn-ghost btn-square hover:text-primary lg:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16 M4 12h16 M4 18h16" /></svg>
             </label>
             <ul tabindex="0" class="menu menu-lg dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-60 text-center">
                 {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
@@ -18,7 +18,7 @@
         </div>
 
         <!-- Theme Toggle Button -->
-        <label class="swap swap-rotate pl-3 hover:text-primary">
+        <label class="swap swap-rotate btn btn-ghost btn-square hover:text-primary">
             <input id="theme-toggle" type="checkbox" class="theme-controller hidden" />
             <!-- sun icon -->
             <svg

@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html class="bg-base-100" lang="{{ site.Language.LanguageCode }}" dir="{{ or site.Language.LanguageDirection `ltr` }}">
+<html class="bg-base-200" lang="{{ site.Language.LanguageCode }}" dir="{{ or site.Language.LanguageDirection `ltr` }}">
   <head>
     {{ partial "head.html" . }}
   </head>
-  <body class="bg-base-200">
-    <header class="bg-base-100 sticky top-0 z-50">
+  <body>
+    <header class="sticky bg-base-200/80 backdrop-blur-sm top-0 z-50">
       {{ partial "header.html" . }}
     </header>
     
     <!-- Main Content -->
-    <main class="px-4 py-12 sm:py-16 max-w-4xl mx-auto">
+    <main class="px-4 py-12 sm:py-16 max-w-3xl mx-auto">
       {{ block "main" . }}{{ end }}
     </main>
 
-    <footer class="flex justify-center bg-base-100">
+    <footer class="flex justify-center border-t border-base-content/15">
       {{ partial "footer.html" . }}
     </footer>
 

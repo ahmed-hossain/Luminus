@@ -11,10 +11,10 @@ title = 'Chowdhury Ahmed Hossain'
     pageRef = '/'
     weight = 10
 
-  [[menus.main]]
-    name = 'Publications'
-    pageRef = '/publications'
-    weight = 20
+  # [[menus.main]]
+  #   name = 'Publications'
+  #   pageRef = '/publications'
+  #   weight = 20
 
   [[menus.main]]
     name = 'Projects'
@@ -55,6 +55,7 @@ title = 'Chowdhury Ahmed Hossain'
     sizes = "auto" # 100vw (default), 75vw, or auto for example
     process = "fill 1920x1080" # "fill 1600x900" or "fill 2100x900" for example
     lqip = "16x webp q20" # "16x webp q20" or "21x webp q20" for example
+    captionposition = "center"
 
 [imaging]
   anchor = "Center"
@@ -67,3 +68,5 @@ title = 'Chowdhury Ahmed Hossain'
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
+  [markup.highlight]
+    style = 'github-dark'

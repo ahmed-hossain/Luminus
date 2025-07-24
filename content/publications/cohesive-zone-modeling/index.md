@@ -1,7 +1,7 @@
 ---
 title: "Extraction of Mechanical Properties of Shape Memory Alloys From Instrumented Spherical Indentation"
 date: 2024-10-01
-authors: "Chowdhury A. Hossain, S. Ahmed"
+authors: "**Chowdhury A. Hossain**, S. Ahmed"
 journal: "Computational Materials Science"
 links:
   pdf: "#"

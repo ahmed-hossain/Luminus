@@ -2,6 +2,7 @@
 title: "A Finite-Strain Phase-Field Description of Thermomechanically-Induced Fracture in Shape Memory Alloys"
 date: 2025-03-01
 incomplete: true
+category: mechanical design
 purpose: "Undergraduate Thesis"
 collaborator: "Md Amin Haque"
 pi: "Dr. Md Jane Alam Khan"
